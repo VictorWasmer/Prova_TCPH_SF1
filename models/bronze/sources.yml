@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: snowflake_sample_data
     database: SNOWFLAKE_SAMPLE_DATA
-    schema: RAW_DATA   
+    schema: TPCH_SF1 
     tables:
       - name: ORDERS
         description: "Tabla con los detalles de los pedidos"
