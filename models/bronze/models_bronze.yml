@@ -1,0 +1,118 @@
+
+version: 2
+
+models:
+    - name: ORDERS
+      description: "Ingesta de la tabla de pedidos"
+      columns:
+          - name: O_ORDERKEY
+            description: "Clave primaria del pedido"
+            tests:
+                - unique:
+                    column_names:
+                      O_ORDERKEY
+                      O_CUSTKEY
+                - not_null
+          - name: O_CUSTKEY
+            description: "Clave primaria del cliente"
+            tests:
+                - unique:
+                    column_names:
+                      O_ORDERKEY
+                      O_CUSTKEY
+                - not_null
+
+    - name: LINEITEM
+      description: "Ingesta de la tabla con los detalles de los artículos en cada pedido"
+      columns:
+          - name: I_ORDERKEY
+            description: "Clave primaria del pedido"
+            tests:
+                - unique:
+                    column_names:
+                      I_ORDERKEY
+                      I_PARTKEY
+                      I_SUPPKEY
+                - not_null
+          - name: I_PARTKEY
+            description: "Clave primaria de la pieza"
+            tests:
+                - unique:
+                    column_names:
+                      I_ORDERKEY
+                      I_PARTKEY
+                      I_SUPPKEY
+                - not_null
+          - name: I_SUPPKEY
+            description: "Clave primaria del proveedor"
+            tests:
+                - unique:
+                    column_names:
+                      I_ORDERKEY
+                      I_PARTKEY
+                      I_SUPPKEY
+                - not_null
+
+    - name: PARTSUPP
+      description: "Ingesta de la tabla que almacena la relación entre partes y proveedores"
+      columns:
+          - name: PS_PARTKEY
+            description: "Clave primaria de la pieza"
+            tests:
+                - unique:
+                    column_names:
+                      PS_PARTKEY
+                      PS_SUPPKEY
+                - not_null
+          - name: PS_SUPPKEY
+            description: "Clave primaria del proveedor"
+            tests:
+                - unique:
+                    column_names:
+                      PS_PARTKEY
+                      PS_SUPPKEY
+                - not_null
+
+    - name: PART
+      description: "Ingesta de la tabla con el detalle de las piezas"
+      columns:
+          - name: P_PARTKEY
+            description: "Clave primaria de la pieza"
+            tests:
+                - unique
+                - not_null
+
+    - name: CUSTOMER
+      description: "Ingesta de la tabla con el detalle de los clientes"
+      columns:
+          - name: C_CUSTKEY
+            description: "Clave primaria del cliente"
+            tests:
+                - unique
+                - not_null
+
+    - name: SUPPLIER
+      description: "Ingesta de la tabla con el detalle de los proveedores"
+      columns:
+          - name: S_SUPPKEY
+            description: "Clave primaria del proveedor"
+            tests:
+                - unique
+                - not_null
+    - name: NATION
+      description: "Ingesta de la tabla de naciones"
+      columns:
+          - name: N_NATIONKEY
+            description: "Clave primaria de la nación"
+            tests:
+                - unique
+                - not_null
+    - name: REGION
+      description: "Ingesta de la tabla de regiones"
+      columns:
+          - name: R_REGIONKEY
+            description: "Clave primaria de la región"
+            tests:
+                - unique
+                - not_null
+                

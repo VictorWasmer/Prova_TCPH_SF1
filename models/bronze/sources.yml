@@ -1,0 +1,161 @@
+version: 2
+
+sources:
+  - name: snowflake_sample_data
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: RAW_DATA   
+    tables:
+      - name: ORDERS
+        description: "Tabla con los detalles de los pedidos"
+        columns:
+          - name: O_ORDERKEY
+            description: "Clave única para cada pedido"
+          - name: O_CUSTKEY
+            description: "Clave del cliente que realiza el pedido"
+          - name: O_ORDERSTATUS
+            description: "Estado del pedido"
+          - name: O_TOTALPRICE
+            description: "Precio total del pedido"          
+          - name: O_ORDERDATE
+            description: "Fecha de creación del pedido"          
+          - name: O_ORDERPRIORITY
+            description: "Prioridad del pedido"          
+          - name: O_CLERK
+            description: "Identificador del empleado que gestionó el pedido"          
+          - name: O_SHIPPRIORITY
+            description: "Prioridad del envío"          
+          - name: O_COMMENT
+            description: "Comentarios adicionales sobre el pedido"
+          
+      - name: LINEITEM
+        description: "Tabla con los detalles de los artículos en cada pedido"
+        columns:
+          - name: I_ORDERYKEY
+            description: "Clave del pedido al que pertenece la línea de artículo"
+          - name: I_PARTKEY
+            description: "Clave del artículo o parte"
+          - name: I_SUPPKEY
+            description: "Clave del proveedor que suministra la parte"
+          - name: I_LINENUMBER
+            description: "Número de la línea dentro de un pedido"
+          - name: I_QUANTITY
+            description: "Cantidad del artículo pedido"
+          - name: I_EXTENDEDPRICE
+            description: "Precio extendido (precio por cantidad)"
+          - name: I_DISCOUNT
+            description: "Descuento aplicado al artículo"
+          - name: I_TAX
+            description: "Impuesto aplicado al artículo"
+          - name: I_RETURNFLAG
+            description: "Indicador si el artículo fue devuelto"
+          - name: I_LINESTATUS
+            description: "Estado de la línea del artículo"          
+          - name: I_SHIPDATE
+            description: "Fecha de envío del artículo"
+          - name: I_COMMITDATE
+            description: "Fecha de compromiso del pedido"
+          - name: I_RECEIPTDATE
+            description: "Fecha de recepción del artículo"
+          - name: I_SHIPINSTRUCT
+            description: "Instrucciones de envío"
+          - name: I_SHIPMODE
+            description: "Modo de envío del artículo"   
+          - name: I_COMMENT
+            description: "Comentarios adicionales sobre la línea de pedido"        
+
+      - name: PARTSUPP
+        description: "Tabla que almacena la relación entre partes y proveedores, incluyendo stock"
+        columns:
+          - name: PS_PARTKEY
+            description: "Clave de la pieza"
+          - name: PS_SUPPKEY
+            description: "Clave del proveedor"
+          - name: PS_AVAILQTY
+            description: "Cantidad disponible de la pieza por proveedor"
+          - name: PS_SUPPLYCOST
+            description: "Costo de suministro de la pieza"
+          - name: PS_COMMENT
+            description: "Comentarios adicionales sobre el suministro"
+
+      - name: PART
+        description: "Tabla que almacena información sobre los productos o piezas"
+        columns:
+          - name: P_PARTKEY
+            description: "Clave única de la pieza"
+          - name: P_NAME
+            description: "Nombre de la pieza"
+          - name: P_MFGR
+            description: "Fabricante de la pieza"
+          - name: P_BRAND
+            description: "Marca de la pieza"
+          - name: P_TYPE
+            description: "Tipo de la pieza"
+          - name: P_SIZE
+            description: "Tamaño de la pieza"
+          - name: P_CONTAINER
+            description: "Contenedor de la pieza (por ejemplo, caja, unidad)"
+          - name: P_RETAILPRICE
+            description: "Precio de venta al por menor"
+          - name: P_COMMENT
+            description: "Comentarios adicionales sobre la pieza"
+
+      - name: CUSTOMER
+        description: "Tabla que almacena información sobre los clientes"
+        columns:
+          - name: C_CUSTKEY
+            description: "Clave única del cliente"
+          - name: C_NAME
+            description: "Nombre del cliente"
+          - name: C_ADDRESS
+            description: "Dirección del cliente"
+          - name: C_NATIONKEY
+            description: "Clave del país donde se encuentra el cliente"
+          - name: C_PHONE
+            description: "Teléfono de contacto del cliente"
+          - name: C_ACCTBAL
+            description: "Saldo de la cuenta del cliente"
+          - name: C_MKTSEGMENT
+            description: "Segmento de mercado al que pertenece el cliente"
+          - name: C_COMMENT
+            description: "Comentarios sobre el cliente" 
+
+      - name: SUPPLIER
+        description: "Tabla que almacena información sobre los proveedores"
+        columns:
+          - name: S_SUPPKEY
+            description: "Clave única del proveedor"
+          - name: S_NAME
+            description: "Nombre del proveedor"
+          - name: S_ADDRESS
+            description: "Dirección del proveedor"
+          - name: S_NATIONKEY
+            description: "Clave del país donde se encuentra el proveedor"
+          - name: S_PHONE
+            description: "Teléfono de contacto del proveedor"
+          - name: S_ACCTBAL
+            description: "Saldo de la cuenta del proveedor"
+          - name: S_COMMENT
+            description: "Comentarios sobre el proveedor"
+
+      - name: NATION
+        description: "Tabla que almacena información sobre las naciones"
+        columns:
+          - name: N_NATIONKEY
+            description: "Clave única de la nación"
+          - name: N_NAME
+            description: "Nombre de la nación"
+          - name: N_REGIONKEY
+            description: "Clave de la región a la que pertenece la nación"
+          - name: N_COMMENT
+            description: "Comentarios sobre la nación" 
+
+      - name: REGION
+        description: "Tabla que almacena información sobre las regiones"
+        columns:
+          - name: R_REGIONKEY
+            description: "Clave única de la región"
+          - name: R_NAME
+            description: "Nombre de la región"
+          - name: R_COMMENT
+            description: "Comentarios sobre la región"
+          
