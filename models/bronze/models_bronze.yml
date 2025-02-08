@@ -8,7 +8,7 @@ models:
           - name: O_ORDERKEY
             description: "Clave primaria del pedido"
           - name: O_CUSTKEY
-            description: "Clave primaria del cliente"
+            description: "Clave foránea del cliente"
 
     - name: raw_LINEITEM
       description: "Ingesta de la tabla con los detalles de los artículos en cada pedido"
@@ -26,10 +26,10 @@ models:
       description: "Ingesta de la tabla que almacena la relación entre partes y proveedores"
       columns:
           - name: PS_PARTKEY
-            description: "Clave primaria de la pieza"
+            description: "Clave foránea de la pieza"
 
           - name: PS_SUPPKEY
-            description: "Clave primaria del proveedor"
+            description: "Clave foránea del proveedor"
 
     - name: raw_PART
       description: "Ingesta de la tabla con el detalle de las piezas"
@@ -42,18 +42,23 @@ models:
       columns:
           - name: C_CUSTKEY
             description: "Clave primaria del cliente"
-
+          - name: C_NATIONKEY
+            description: "Clave foránea del país"
+            
     - name: raw_SUPPLIER
       description: "Ingesta de la tabla con el detalle de los proveedores"
       columns:
           - name: S_SUPPKEY
             description: "Clave primaria del proveedor"
+          - name: S_NATIONKEY
+            description: "Clave foránea del país"
+          
 
     - name: raw_NATION
-      description: "Ingesta de la tabla de naciones"
+      description: "Ingesta de la tabla de países"
       columns:
           - name: N_NATIONKEY
-            description: "Clave primaria de la nación"
+            description: "Clave primaria del país"
           - name: N_REGIONKEY
             description: "Clave foránea de la región"
             
