@@ -2,7 +2,7 @@
 version: 2
 
 models:
-    - name: ORDERS
+    - name: raw_ORDERS
       description: "Ingesta de la tabla de pedidos"
       columns:
           - name: O_ORDERKEY
@@ -10,19 +10,19 @@ models:
           - name: O_CUSTKEY
             description: "Clave primaria del cliente"
 
-    - name: LINEITEM
+    - name: raw_LINEITEM
       description: "Ingesta de la tabla con los detalles de los artículos en cada pedido"
       columns:
           - name: I_ORDERKEY
-            description: "Clave primaria del pedido"
+            description: "Clave foránea del pedido"
 
           - name: I_PARTKEY
-            description: "Clave primaria de la pieza"
+            description: "Clave foránea de la pieza"
 
           - name: I_SUPPKEY
-            description: "Clave primaria del proveedor"
+            description: "Clave foránea del proveedor"
 
-    - name: PARTSUPP
+    - name: raw_PARTSUPP
       description: "Ingesta de la tabla que almacena la relación entre partes y proveedores"
       columns:
           - name: PS_PARTKEY
@@ -31,31 +31,33 @@ models:
           - name: PS_SUPPKEY
             description: "Clave primaria del proveedor"
 
-    - name: PART
+    - name: raw_PART
       description: "Ingesta de la tabla con el detalle de las piezas"
       columns:
           - name: P_PARTKEY
             description: "Clave primaria de la pieza"
 
-    - name: CUSTOMER
+    - name: raw_CUSTOMER
       description: "Ingesta de la tabla con el detalle de los clientes"
       columns:
           - name: C_CUSTKEY
             description: "Clave primaria del cliente"
 
-    - name: SUPPLIER
+    - name: raw_SUPPLIER
       description: "Ingesta de la tabla con el detalle de los proveedores"
       columns:
           - name: S_SUPPKEY
             description: "Clave primaria del proveedor"
 
-    - name: NATION
+    - name: raw_NATION
       description: "Ingesta de la tabla de naciones"
       columns:
           - name: N_NATIONKEY
             description: "Clave primaria de la nación"
-
-    - name: REGION
+          - name: N_REGIONKEY
+            description: "Clave foránea de la región"
+            
+    - name: raw_REGION
       description: "Ingesta de la tabla de regiones"
       columns:
           - name: R_REGIONKEY

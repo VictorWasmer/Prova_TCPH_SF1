@@ -1,0 +1,121 @@
+
+version: 2
+
+models:
+    - name: silver_ORDERS
+      description: "Tabla de pedidos"
+      columns:
+
+          - name: O_ORDERKEY
+            description: "Clave primaria del pedido"
+            tests:
+              - unique
+              - not_null
+          
+          - name: O_CUSTKEY
+            description: "Clave primaria del cliente"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_CUSTOMER')
+                  field: C_CUSTKEY
+
+    - name: silver_LINEITEM
+      description: "Tabla con los detalles de los artículos en cada pedido"
+      columns:
+          - name: L_ORDERKEY
+            description: "Clave foránea del pedido"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_ORDERS')
+                  field: O_ORDERKEY
+
+          - name: L_PARTKEY
+            description: "Clave foránea de la pieza"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_PARTS')
+                  field: P_PARTKEY
+
+          - name: L_SUPPKEY
+            description: "Clave foránea del proveedor"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_SUPPLIER')
+                  field: S_SUPPKEY
+
+    - name: silver_PARTSUPP
+      description: "Tabla que almacena la relación entre partes y proveedores"
+      columns:
+          - name: PS_PARTKEY
+            description: "Clave primaria de la pieza"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_PARTS')
+                  field: P_PARTKEY
+
+          - name: PS_SUPPKEY
+            description: "Clave primaria del proveedor"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_SUPPLIERS')
+                  field: S_SUPPKEY
+
+    - name: silver_PART
+      description: "Tabla con el detalle de las piezas"
+      columns:
+          - name: P_PARTKEY
+            description: "Clave primaria de la pieza"
+            tests:
+              - not_null
+              - unique
+
+    - name: silver_CUSTOMER
+      description: "Tabla con el detalle de los clientes"
+      columns:
+          - name: C_CUSTKEY
+            description: "Clave primaria del cliente"
+            tests:
+              - not_null
+              - unique
+
+    - name: silver_SUPPLIER
+      description: "Tabla con el detalle de los proveedores"
+      columns:
+          - name: S_SUPPKEY
+            description: "Clave primaria del proveedor"
+            tests:
+              - not_null
+              - unique
+
+    - name: silver_NATION
+      description: "Tabla de naciones"
+      columns:
+          - name: N_NATIONKEY
+            description: "Clave primaria de la nación"
+            tests:
+              - not_null
+              - unique
+
+          - name: N_REGIONKEY
+            description: "Clave foránea de la región"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('silver_REGION')
+                  field: R_REGIONKEY   
+
+    - name: silver_REGION
+      description: "Ingesta de la tabla de regiones"
+      columns:
+          - name: R_REGIONKEY
+            description: "Clave primaria de la región"
+            tests:
+              - not_null
+              - unique
+                
