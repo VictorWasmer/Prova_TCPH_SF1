@@ -1,0 +1,57 @@
+
+version: 2
+
+models:
+    - name: FACTS_ORDERS
+      description: "Tabla de pedidos"
+      columns:
+
+          - name: PK_ORDERKEY
+            description: "Clave primaria del pedido"
+          - name: FK_CUSTKEY
+            description: "Clave foránea del cliente"
+          - name: FK_PARTKEY
+            description: "Clave foránea de la pieza"
+          - name: FK_SUPPKEY
+            description: "Clave foránea del proveedor"
+
+    - name: FACTS_PARTSUPP
+      description: "Tabla con el detalle del stock de cada pieza por proveedor"
+      columns:
+
+          - name: FK_PARTKEY
+            description: "Clave foránea del pedido"
+          - name: FK_SUPPKEY
+            description: "Clave foránea de la pieza"
+
+    - name: DIM_CUSTOMER
+      description: "Tabla que almacena la información de los clientes"
+      columns:
+          - name: PK_CUSTKEY
+            description: "Clave primaria del cliente"
+          - name: FK_NATIONKEY
+            description: "Clave foránea del país del cliente"
+
+    - name: DIM_PART
+      description: "Tabla con el detalle de las piezas"
+      columns:
+
+          - name: PK_PART
+            description: "Clave primaria de la pieza"
+
+    - name: DIM_NATION
+      description: "Tabla que contiene el detalle de los países y su región asociada"
+      columns:
+
+          - name: PK_NATION
+            description: "Clave primaria del país"
+          - name: PK_REGION
+            description: "Clave primaria de la región"
+
+    - name: DIM_SUPPLIER
+      description: "Tabla con el detalle de los proveedores"
+      columns:
+          - name: PK_SUPPLIER
+            description: "Clave primaria del proveedor"
+          - name: FK_NATION
+            description: "Clave foránea del país"

@@ -37,8 +37,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   prova_tcph_sf1:
-    # Applies to all files under models/example/
     bronze:
       +materialized: view
     silver:
+      +materialized: table
+    gold:
       +materialized: table
