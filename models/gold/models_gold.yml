@@ -20,9 +20,9 @@ models:
       columns:
 
           - name: FK_PARTKEY
-            description: "Clave foránea del pedido"
-          - name: FK_SUPPKEY
             description: "Clave foránea de la pieza"
+          - name: FK_SUPPKEY
+            description: "Clave foránea del proveedor"
 
     - name: DIM_CUSTOMER
       description: "Tabla que almacena la información de los clientes"
@@ -54,4 +54,4 @@ models:
           - name: PK_SUPPLIER
             description: "Clave primaria del proveedor"
           - name: FK_NATION
-            description: "Clave foránea del país"
+            description: "Clave foránea del país del proveedor"

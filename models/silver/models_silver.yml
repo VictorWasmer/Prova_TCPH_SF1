@@ -14,7 +14,7 @@ models:
               - not_null
           
           - name: O_CUSTKEY
-            description: "Clave primaria del cliente"
+            description: "Clave foránea del cliente"
             tests:
               - not_null
               - relationships:
@@ -92,6 +92,13 @@ models:
               - not_null
               - unique:
                   severity: warn
+          - name: C_NATIONKEY
+            description: "Clave foránea del país"
+            tests:                  
+              - relationships:
+                  to: ref('silver_REGION')
+                  field: R_REGIONKEY  
+                  severity: warn                   
 
     - name: silver_SUPPLIER
       description: "Tabla con el detalle de los proveedores"
@@ -102,7 +109,14 @@ models:
               - not_null
               - unique:
                   severity: warn
-
+          - name: S_NATIONKEY
+            description: "Clave foránea del país"
+            tests:                  
+              - relationships:
+                  to: ref('silver_REGION')
+                  field: R_REGIONKEY  
+                  severity: warn    
+                  
     - name: silver_NATION
       description: "Tabla de naciones"
       columns:
@@ -123,7 +137,7 @@ models:
                   severity: warn 
 
     - name: silver_REGION
-      description: "Ingesta de la tabla de regiones"
+      description: "Tabla de regiones"
       columns:
           - name: R_REGIONKEY
             description: "Clave primaria de la región"
