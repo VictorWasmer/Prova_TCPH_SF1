@@ -96,8 +96,8 @@ models:
             description: "Clave foránea del país"
             tests:                  
               - relationships:
-                  to: ref('silver_REGION')
-                  field: R_REGIONKEY  
+                  to: ref('silver_NATION')
+                  field: N_NATIONKEY  
                   severity: warn                   
 
     - name: silver_SUPPLIER
@@ -113,8 +113,8 @@ models:
             description: "Clave foránea del país"
             tests:                  
               - relationships:
-                  to: ref('silver_REGION')
-                  field: R_REGIONKEY  
+                  to: ref('silver_NATION')
+                  field: N_NATIONKEY  
                   severity: warn    
                   
     - name: silver_NATION
