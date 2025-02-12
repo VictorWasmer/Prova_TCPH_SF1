@@ -15,7 +15,7 @@ models:
           - name: FK_SUPPKEY
             description: "Clave foránea del proveedor"
 
-    - name: FACTS_PARTSUPP
+    - name: DIM_PARTSUPP
       description: "Tabla con el detalle del stock de cada pieza por proveedor"
       columns:
 
